@@ -1,0 +1,9 @@
+.fa-shopping-cart {
+    &:after {
+        color: red;
+        content: '1';
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+    }
+}
