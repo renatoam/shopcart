@@ -1,0 +1,10 @@
+// VIEWPORTS
+$maximum-viewport: 980; 
+$minimum-viewport: 320; 
+$maximum-size: 12;
+$minimum-size: 8;
+
+// DEFAULTS
+html {
+  font-size: calc(#{$minimum-size}px + (#{$maximum-size} - #{$minimum-size}) * ((100vw - #{$minimum-viewport}px) / (#{$maximum-viewport} - #{$minimum-viewport})));
+}

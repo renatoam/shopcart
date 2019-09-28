@@ -6,33 +6,66 @@ class Cart {
         this.cart = [];
     }
 
-    addToCart(id) {
-        let domCart = document.querySelector('#itemsCart');
-        this.cart.push(id);
-        domCart.textContent = cart.length;
-        this.renderCart();
+    addToCart(obj) {
+        let iconCart = document.querySelector('#qtd');
+        let objects = [];
+        
+        this.cart.push(obj);
+        let unique = new Set(this.cart);
+        
+        unique.forEach(el => {
+            let qtd = this.cart.filter(f => f.id === el.id).length;
+            objects.push({ el, qtd });
+        });
+
+        iconCart.textContent = this.cart.length;
+        this.renderCart(objects);
     }
 
-    removeFromCart(id) {
-        let domCart = document.querySelector('#itemsCart');
-        this.cart.pop(id);
-        domCart.textContent = cart.length;
+    removeFromCart(obj) {
+        let iconCart = document.querySelector('#qtd');
+        let objects = [];
+        
+        this.cart.pop(obj);
+        let unique = new Set(this.cart);
+        
+        unique.forEach(el => {
+            let qtd = this.cart.filter(f => f.id === el.id).length;
+            objects.push({ el, qtd });
+        });
+        
+        iconCart.textContent = this.cart.length;
+        this.renderCart(objects);
     }
 
-    renderCart() {
-        let cart = '';
+    clearRender() {
         let sideCart = document.querySelector('#cart');
-        if (this.cart.length > 0) {
-            this.cart.forEach(el => {
-                let qtd = this.cart.filter(el => el.id === el.id).length;
-                cart += `<ul>
-                    <li>${el.title}</li>
-                    <li>${el.price}</li>
-                    <li>${qtd}</li>
-                </ul>`;
-            });
-        }
-        sideCart.insertAdjacentHTML('afterbegin', cart);
+        sideCart.innerHTML = "";
+    }
+
+    renderCart(objects) {
+        let render = '';
+        let sideCart = document.querySelector('#cart');        
+        
+        objects.forEach(p => {
+            this.clearRender();
+            render += `
+            <section class="bag">
+                <section className="bag__item" data-id="${p.el.id}">
+                    <ul class="bag__info">
+                        <li>${p.el.title}</li>
+                        <li>${p.el.price}</li>
+                        <li>${p.qtd}</li>
+                    </ul>
+                    <section class="bag__actions">
+                        <button class="add" data-id="${p.el.id}">+</button>
+                        <button class="remove" data-id="${p.el.id}">-</button>
+                    </section>
+                </section>
+            </section>`;
+        });
+
+        sideCart.insertAdjacentHTML('afterbegin', render);
     }
 }
 
@@ -68,7 +101,7 @@ class Template {
             <section class="product__info">
                 <section class="product__title">
                     <p class="title">${this.title}</p>
-                    <ul>
+                    <ul class="features">
                         <li>${this.chipType}</li>
                         <li>${this.memory}</li>
                     </ul>
@@ -78,10 +111,10 @@ class Template {
                     <p class="oldPrice"><small><del>${this.oldPrice}</del></small></p>
                 </section>
             </section>
-            <section class="actions">
-                <button class="bookmark">♥</button>
-                <button type="button" class="addToCart" data-id="${this.id}">Add to Cart</button>
-                <button class="compare">♣</button>
+            <section class="product__actions">
+                <button class="button bookmark">♥</button>
+                <button type="button" class="button add" data-id="${this.id}">Add to Cart</button>
+                <button class="button compare">♣</button>
             </section>
         </section>
         `;
@@ -126,11 +159,10 @@ class ShopCart {
     addEvent() {
         document.addEventListener('click', e => {
             let target = e.target;
-            target != 'addTocart' && false;
-
             let obj = this.product.elements.filter(el => el.id == target.getAttribute('data-id'));
-
-            target && this.cart.addToCart(obj[0]);
+            
+            target.classList.contains('add') && this.cart.addToCart(obj[0]);
+            target.classList.contains('remove') && this.cart.removeFromCart(obj[0]);
         });
     }
 }

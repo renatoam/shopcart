@@ -20,8 +20,8 @@ function jsComp() {
 // CSS tasks
 function scss() {
     return src('src/scss/**/*.scss')
-        .pipe(postcss([autoprefixer()]))
         .pipe(sass().on('error', sass.logError))
+        .pipe(postcss([autoprefixer()]))
         .pipe(cleancss({ compatibility: 'ie8' }))
         .pipe(dest('dist/css'))
 }

@@ -1,21 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ecomm</title>
     <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
-    <i class="fas fa-shopping-cart">&nbsp;</i>
-    <section id="itemsCart"></section>
-    <section id="products"></section>
-    <aside id="cart"></aside>
-    
-    
+    <main>
+        <header class="header">
+            <picture class="header__logo">
+                <img src="./../naruto.jpg" alt="logo" sizes="" srcset="">
+            </picture>
+            <nav class="header__menu">
+                <ul>
+                    <li>Home</li>
+                    <li>Products</li>
+                    <li>Categories</li>
+                    <li>Sign In</li>
+                </ul>
+            </nav>
+            <section class="header__options">
+                <section class="favorites">
+                    <i class="fas fa-heart">&nbsp;</i>
+                    <section id="favorite"></section>
+                </section>
+                <section class="comparision">
+                    <i class="fas fa-not-equal">&nbsp;</i>
+                    <section id="compare"></section>
+                </section>
+                <section class="items">
+                    <i class="fas fa-shopping-cart items__icon">&nbsp;</i>
+                    <section id="qtd" class="items__qtd"></section>
+                </section>
+            </section>
+        </header>
+
+        <section class="panel">
+            <section class="panel__products">
+                <section class="panel__filters">Filter: </section>
+                <section id="products"></section>
+            </section>
+            <section class="panel__cart">
+                <h2>Carrinho</h2>
+                <section id="cart"></section>
+            </section>
+        </section>
+    </main>
+
+
     <script src="../node_modules/axios/dist/axios.min.js"></script>
     <script src="../dist/js/bundle.js"></script>
 </body>
+
 </html>
