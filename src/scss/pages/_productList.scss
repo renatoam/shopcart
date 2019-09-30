@@ -1,8 +1,27 @@
 .panel {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
   margin: 0 auto;
   max-width: 1200px;
+
+  &__header {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 2fr 1fr;
+
+    &--filters {
+      align-items: stretch;
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
 #products {

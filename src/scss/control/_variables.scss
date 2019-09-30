@@ -8,3 +8,7 @@ $minimum-size: 8;
 html {
   font-size: calc(#{$minimum-size}px + (#{$maximum-size} - #{$minimum-size}) * ((100vw - #{$minimum-viewport}px) / (#{$maximum-viewport} - #{$minimum-viewport})));
 }
+
+body {
+  background-color: #dfe6e9;
+}
