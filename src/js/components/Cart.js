@@ -22,8 +22,10 @@ class Cart {
   removeFromCart(obj) {
       let iconCart = document.querySelector('#qtd');
       let objects = [];
+
+      let del = this.cart.findIndex(el => el.id === obj.id);
       
-      this.cart.pop(obj);
+      this.cart.splice(del, 1);
       let unique = new Set(this.cart);
       
       unique.forEach(el => {
@@ -42,29 +44,33 @@ class Cart {
 
   renderCart(objects) {
       let render = '';
-      let sideCart = document.querySelector('#cart');        
+      let sideCart = document.querySelector('#cart');    
       
-      objects.forEach(p => {
-          this.clearRender();
-          let currentPrice = (p.el.price - (p.el.price * 0.2)).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-          render += `
-          <section class="bag">
-              <section class="bag__item" data-id="${p.el.id}">
-                  <figure>
-                      <img src="${p.el.picture}" />
-                  </figure>
-                  <ul class="bag__info">
-                      <li>${p.el.title}</li>
-                      <li>${currentPrice}</li>
-                  </ul>
-                  <section class="bag__actions">
-                      <button class="add" data-id="${p.el.id}">+</button>
-                      <span>${p.qtd}</span>
-                      <button class="remove" data-id="${p.el.id}">-</button>
-                  </section>
-              </section>
-          </section>`;
-      });
+      if (objects.length > 0) {
+        objects.forEach(p => {
+            this.clearRender();
+            let currentPrice = (p.el.price - (p.el.price * 0.2)).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            render += `
+            <section class="bag">
+                <section class="bag__item" data-id="${p.el.id}">
+                    <figure>
+                        <img src="${p.el.picture}" />
+                    </figure>
+                    <ul class="bag__info">
+                        <li>${p.el.title}</li>
+                        <li>${currentPrice}</li>
+                    </ul>
+                    <section class="bag__actions">
+                        <button class="add" data-id="${p.el.id}">+</button>
+                        <span>${p.qtd}</span>
+                        <button class="remove" data-id="${p.el.id}">-</button>
+                    </section>
+                </section>
+            </section>`;
+        });
+      } else {
+          this.clearRender()
+      }
 
       sideCart.insertAdjacentHTML('afterbegin', render);
   }
