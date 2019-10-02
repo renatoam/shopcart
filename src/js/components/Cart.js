@@ -50,6 +50,19 @@ class Cart {
         objects.forEach(p => {
             this.clearRender();
             let currentPrice = (p.el.price - (p.el.price * 0.2)).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            let logo = '';
+            let brand = p.el.brand;
+            switch (brand) {
+                case 'Motorola': logo = './../../src/assets/moto.png';
+                break;
+                case 'LG': logo = './../../src/assets/lg.png';
+                break;
+                case 'Samsung': logo = './../../src/assets/samsung.png';
+                break;
+                case 'Lenovo': logo = './../../src/assets/lenovo.png';
+                break;
+                default: logo = './../../src/assets/chibi-naruto.png'
+            }
             render += `
             <section class="bag">
                 <section class="bag__item" data-id="${p.el.id}">
@@ -59,6 +72,7 @@ class Cart {
                     <ul class="bag__info">
                         <li>${p.el.title}</li>
                         <li>${currentPrice}</li>
+                        <li><img src="${logo}" alt="Logo ${brand}" style="${brand == 'Samsung' && "width: 45px"}"/></li>
                     </ul>
                     <section class="bag__actions">
                         <button class="add" data-id="${p.el.id}">+</button>
