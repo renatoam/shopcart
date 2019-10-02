@@ -30,3 +30,8 @@
 ### js/xxx
 
 - Adding of simple snippets
+
+> #### OBSERVAÇÕES
+
+> O ExpressJS foi instalado, mas ainda não foi configurado. 
+
