@@ -71,8 +71,9 @@ class Cart {
                     </figure>
                     <ul class="bag__info">
                         <li>${p.el.title}</li>
-                        <li>${currentPrice}</li>
-                        <li><img src="${logo}" alt="Logo ${brand}" style="${brand == 'Samsung' && "width: 45px"}"/></li>
+                        <li>${p.el.quantity > 0 ? currentPrice : 'INDISPONÍVEL'}</li>
+                        <li>${p.el.quantity > 0 ? 'EM ESTOQUE' : false}</li>
+                        <li><img src="${logo}" alt="Logo ${brand}" style="${brand == 'Samsung' || brand == 'Lenovo' && "width: 45px"}"/></li>
                     </ul>
                     <section class="bag__actions">
                         <button class="add" data-id="${p.el.id}">+</button>
