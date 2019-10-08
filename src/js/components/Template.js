@@ -1,5 +1,5 @@
 class Template {
-  constructor(prod) {
+  constructor(prod, out) {
       this.id = prod.id,
       this.title = prod.title,
       this.picture = prod.picture,
@@ -8,7 +8,8 @@ class Template {
       this.chipType = prod.chipType,
       this.price = prod.price,
       this.description = prod.description,
-      this.quantity = prod.quantity
+      this.quantity = prod.quantity,
+      this.out = out
   }
 
   get currentPrice(){
@@ -42,7 +43,7 @@ class Template {
           </section>
           <section class="product__actions">
               <button class="button bookmark">♥</button>
-              <button type="button" class="button add" data-id="${this.id}">Add to Cart</button>
+              <button type="button" class="button add" data-id="${this.id}" ${this.out == this.id || this.quantity == 0 ? 'disabled>Indisponível' : '>Add to Cart'}</button>
               <button class="button compare">♣</button>
           </section>
       </section>
