@@ -1,4 +1,6 @@
 // imports
+// let Product = require('./Product');
+// let Cart = require('./Cart');
 import Product from './Product';
 import Cart from './Cart';
 
