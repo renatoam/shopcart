@@ -3,6 +3,7 @@
 // let Fix = require("./handlers/FixImage");
 import ShopCart from "./components/Main";
 import Fix from "./handlers/FixImage";
+import '../scss/style.scss';
 
 // Instanciando os componentes (classes)
 const Shop = new ShopCart();
