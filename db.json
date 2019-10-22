@@ -87,6 +87,17 @@
       "brand": "Lenovo",
       "chipType": "Micro Chip",
       "quantity": 3
+    },
+    {
+      "id": 123456789,
+      "title": "Smartphone Asus Zenfone 5 Selfie Dual Chip",
+      "price": 1399.99,
+      "picture": "https://www.nuvo.sk/2942-small_default/nuvo-flip-case-for-lenovo-vibe-c2-white.jpg",
+      "description": "Trava, falha e irrita.",
+      "memory": "16GB",
+      "brand": "Asus",
+      "chipType": "Micro Chip",
+      "quantity": 13
     }
   ]
 }
