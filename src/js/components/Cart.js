@@ -1,3 +1,5 @@
+import FixImage from "../handlers/FixImage";
+
 class Cart {
   constructor() {
       this.cart = [];
@@ -16,7 +18,7 @@ class Cart {
       });
 
       iconCart.textContent = this.cart.length;
-      this.renderCart(objects);
+      this.mountCart(objects);
   }
 
   removeFromCart(obj) {
@@ -34,7 +36,7 @@ class Cart {
       });
       
       iconCart.textContent = this.cart.length;
-      this.renderCart(objects);
+      this.mountCart(objects);
   }
 
   clearRender() {
@@ -42,9 +44,15 @@ class Cart {
       sideCart.innerHTML = "";
   }
 
-  renderCart(objects) {
+  calculate() {
+    let vlTotal = 0;
+    this.cart.forEach(el => vlTotal += el.price - (el.price * 0.2));
+
+    return vlTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+  }
+
+  mountCart(objects) {
       let render = '';
-      let sideCart = document.querySelector('#cart');    
       
       if (objects.length > 0) {
         objects.forEach(p => {
@@ -86,7 +94,22 @@ class Cart {
           this.clearRender()
       }
 
-      sideCart.insertAdjacentHTML('afterbegin', render);
+      this.renderCart(render);
+  }
+
+  renderCart(render) {
+    let sideCart = document.querySelector('#cart');
+    let contentCart = '';
+    let total = `
+    <section class="bag__total">
+        <p>Total(${this.cart.length == 1 ? this.cart.length + " item" : this.cart.length + " itens"}): </p>
+        <p>${this.calculate()}</p>
+    </section>
+    `;
+
+    contentCart = render + total;
+    sideCart.insertAdjacentHTML('afterbegin', contentCart);
+    FixImage();
   }
 }
 

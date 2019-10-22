@@ -1,7 +1,5 @@
 import api from './../services';
 import Template from './Template';
-// let api = require('./../services');
-// let Template = require('./Template');
 
 class Product {  
   constructor() {

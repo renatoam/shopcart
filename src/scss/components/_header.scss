@@ -1,11 +1,14 @@
 .header {
-  border-bottom: 1px solid #b2bec3;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f1f2f6;
   display: grid;
   grid-template-columns: 20% 50% 30%;
   grid-template-rows: 70px;
   margin-bottom: 30px;
   max-width: 100%;
   padding: 20px;
+  position: sticky;
+  top: 0;
 
   &__logo {
     align-items: center;

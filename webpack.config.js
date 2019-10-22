@@ -28,10 +28,27 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [{
-            loader: MiniCssExtractPlugin.loader
-          },
+          loader: MiniCssExtractPlugin.loader
+        },
           "css-loader",
           "sass-loader"
+        ],
+      },
+      {
+        test: /\.(eot|woff|woff2|ttf|svg)(\?\S*)?$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'Fonts/',
+            publicPath: '../Fonts/'
+          }
+        }]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
         ],
       },
       {
