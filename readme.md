@@ -9,9 +9,9 @@
 - Classes
 - Front-End Challenge
 
-### Obs
-
-See the comments through the application to understand every piece of code and its role.
+> #### Obs
+>
+> See the comments through the application to understand every piece of code and its role.
 
 ## Initializing application
 
