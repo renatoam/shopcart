@@ -9,7 +9,7 @@
 - Classes
 - Front-End Challenge
 
-> #### Obs
+> ### Obs
 >
 > See the comments through the application to understand every piece of code and its role.
 
