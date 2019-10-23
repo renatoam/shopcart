@@ -1,30 +1,30 @@
-// Importando módulo que controla a aplicação
+// Importing application control module
 import ShopCart from "./components/Main";
 
-// Importando funções auxiliares
+// Importing aux functions
 import Fix from "./handlers/FixImage";
 import Inject from './handlers/InjectImage';
 
-// Importando estilos
+// Importing styles
 import '../scss/style.scss';
 import '@fortawesome/fontawesome-free/js/all';
 
-// Instanciando a classe de controle
+// Instantating the control class
 const Shop = new ShopCart();
 
-// Executando função assim que o DOM carregar seu conteúdo
+// Calling function after DOM load its content
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Inicializando a aplicação com método que monta a classe de controle
+    // Executing the mount application module that starts application
     Shop.mount();
 
-    // Executando funções auxiliares após o DOM carregar seu conteúdo
+    // Waiting DOM load its content to call aux functions
     setTimeout(() => {
       
-      // Correção de imagens que não carregaram (aplicação de placeholder)
+      // Fix not loading images
       Fix(); 
 
-      // Injetando algumas imagens no HTML
+      // Injecting some images in HTML file
       Inject();
 
     }, 200);
