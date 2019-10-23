@@ -23,6 +23,45 @@ Then, execute the application with:
 
         npm run dev
 
+## Disclaimer
+
+The initial used API doesn't allow PATCH method, therefore I had to use a fake API JSON Server.
+To use initial API and control the stock, use script below.
+
+        addToCart(obj) {
+                let iconCart = document.querySelector('#qtd');
+                let objects = [];
+                
+                this.cart.push(obj);
+                let unique = new Set(this.cart);
+                
+                unique.forEach(el => {
+                        let qtd = this.cart.filter(f => f.id === el.id).length;
+                        objects.push({ el, qtd });
+                });
+
+                iconCart.textContent = this.cart.length;
+                this.mountCart(objects);
+                }
+
+                removeFromCart(obj) {
+                let iconCart = document.querySelector('#qtd');
+                let objects = [];
+
+                let del = this.cart.findIndex(el => el.id === obj.id);
+                
+                this.cart.splice(del, 1);
+                let unique = new Set(this.cart);
+                
+                unique.forEach(el => {
+                        let qtd = this.cart.filter(f => f.id === el.id).length;
+                        objects.push({ el, qtd });
+                });
+                
+                iconCart.textContent = this.cart.length;
+                this.mountCart(objects);
+        }
+
 ## Branches
 
 ### master
