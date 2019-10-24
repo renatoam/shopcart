@@ -2,6 +2,7 @@ class Template {
   constructor(prod) {
       this.id = prod.id,
       this.title = prod.title,
+      this.shortName = prod.shortName,
       this.picture = prod.picture,
       this.brand = prod.brand,
       this.memory = prod.memory,
@@ -21,15 +22,24 @@ class Template {
       return oldPrice;
   }
 
+  showDetails(id) {
+    document.querySelector(`.modal[data-id="${id}"]`).style.display = 'block';
+  }
+
+  closeDetails() {
+    document.querySelectorAll('.modal').style.display = 'none';
+  }
+
   template(){
       let template = `
       <section class="product" id="${this.id}">
           <figure class="product__image">
-              <img src="${this.picture}" alt="${this.brand}"/>
+              <img src="${this.picture}" alt="${this.title}"/>
+              <i class="fas fa-plus-circle zoom"></i>
           </figure>
           <section class="product__info">
               <section class="product__title">
-                  <p class="title">${this.title}</p>
+                  <p class="title">${this.shortName}</p>
                   <ul class="features">
                       <li>${this.chipType}</li>
                       <li>${this.memory}</li>
@@ -45,6 +55,27 @@ class Template {
               <button type="button" class="button add" data-id="${this.id}">Add to Cart</button>
               <button class="button compare">♣</button>
           </section>
+      </section>
+      <section class="modal" data-id"${this.id}">
+        <section class="modal__overlay"></section>
+        <section class="modal__container">
+            <section class="modal__info">
+                <figure class="modal__image">
+                    <img src="${this.picture}" alt="${this.title}"/>
+                </figure>
+                <section class="modal__details">
+                    <h2>${this.shortName}</h2>
+                    <ul class="features">
+                      <li>${this.chipType}</li>
+                      <li>${this.memory}</li>
+                    </ul>
+                </section>
+            </section>
+            <section class="modal__description">
+                <p>${this.description}</p>
+            </section>
+            <div class="modal__close">X</div>
+        </section>
       </section>
       `;
 

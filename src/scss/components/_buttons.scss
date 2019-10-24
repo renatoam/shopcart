@@ -1,0 +1,26 @@
+button[disabled="disabled"] {
+  background-color: #f1f2f6 !important;
+  color: #ced6e0 !important;
+  cursor: not-allowed !important;
+}
+
+.button.closeOrder {
+  align-items: center;
+  background-color: #2ed573;
+  border: none;
+  border-radius: 5px;
+  color: #FFF;
+  cursor: pointer;
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  margin: 5px 0;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+}
+
+.button.closeOrder:hover {
+  background-color: #7bed9f;
+}
