@@ -28,6 +28,14 @@
   &__image {
     align-self: center;
     margin: 5px;
+
+    .details {
+      transition: all 0.4s ease-in-out;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
   }
 
   &__title {

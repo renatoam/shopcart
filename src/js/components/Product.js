@@ -23,6 +23,20 @@ class Product {
 
       return this.elements
   }
+
+  clearList() {
+    let container = document.getElementById('products');
+
+    container.innerHTML = "";
+  }
+
+  showDetails(id) {
+    document.querySelector(`.modal[data-id="${id}"]`).style.display = 'block';
+  }
+
+  closeDetails(id) {
+    document.querySelector(`.modal[data-id="${id}"]`).style.display = 'none';
+  }
 }
 
 export default Product;

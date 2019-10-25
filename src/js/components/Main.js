@@ -21,12 +21,12 @@ class ShopCart {
             let target = e.target;
             let obj = this.product.elements.filter(el => el.id == target.getAttribute('data-id'));
             // Verify all elements that match target element ID and creates an array "obj"
-
-            console.log(target);
             
             target.classList.contains('add') && this.cart.addToCart(obj[0]);
             target.classList.contains('remove') && this.cart.removeFromCart(obj[0]);
             target.classList.contains('closeOrder') && this.cart.closeOrder();
+            target.classList.contains('details') && this.product.showDetails(target.getAttribute('data-id'));
+            target.classList.contains('modal__close') && this.product.closeDetails(target.getAttribute('data-id'));
             // Verify by class name if it add or remove an item and pass as argument only one item from array obj
         });
     }

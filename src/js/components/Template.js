@@ -22,20 +22,11 @@ class Template {
       return oldPrice;
   }
 
-  showDetails(id) {
-    document.querySelector(`.modal[data-id="${id}"]`).style.display = 'block';
-  }
-
-  closeDetails() {
-    document.querySelectorAll('.modal').style.display = 'none';
-  }
-
   template(){
       let template = `
       <section class="product" id="${this.id}">
           <figure class="product__image">
-              <img src="${this.picture}" alt="${this.title}"/>
-              <i class="fas fa-plus-circle zoom"></i>
+              <img src="${this.picture}" alt="${this.title}" class="details" data-id="${this.id}" />
           </figure>
           <section class="product__info">
               <section class="product__title">
@@ -56,7 +47,7 @@ class Template {
               <button class="button compare">♣</button>
           </section>
       </section>
-      <section class="modal" data-id"${this.id}">
+      <section class="modal" data-id="${this.id}">
         <section class="modal__overlay"></section>
         <section class="modal__container">
             <section class="modal__info">
@@ -74,7 +65,7 @@ class Template {
             <section class="modal__description">
                 <p>${this.description}</p>
             </section>
-            <div class="modal__close">X</div>
+            <div class="modal__close" data-id="${this.id}">X</div>
         </section>
       </section>
       `;
