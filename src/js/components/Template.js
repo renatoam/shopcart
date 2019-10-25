@@ -12,6 +12,7 @@ class Template {
       this.quantity = prod.quantity
   }
 
+  // Simulating a fale discount
   get currentPrice(){
       let currentPrice = (this.price - (this.price * 0.2)).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
       return currentPrice;
@@ -22,6 +23,7 @@ class Template {
       return oldPrice;
   }
 
+  // Rendering product cards
   template(){
       let template = `
       <section class="product" id="${this.id}">

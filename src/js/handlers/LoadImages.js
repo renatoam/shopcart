@@ -1,1 +1,0 @@
-// pensar numa lógica

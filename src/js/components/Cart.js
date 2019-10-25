@@ -31,7 +31,10 @@ class Cart {
     addToCart(obj) {
         let q = (this.cart.filter(el => el.id == obj.id).length + 1);
         let stockQtd = obj.quantity - q;
+        // Get the current quantity of the product 
 
+        // Check if quantity in the cart doesn't exceed the stock. 
+        // If not, add item to cart, update stock, display quantity on header and send product to be render
         if (obj.quantity < q) {
             this.mountCart(obj, true);
         } else {
@@ -46,6 +49,7 @@ class Cart {
         }
     }
 
+    // Same as above
     removeFromCart(obj) {
         let q = (this.cart.filter(el => el.id == obj.id).length - 1);
         let stockQtd = obj.quantity - q;
@@ -61,11 +65,13 @@ class Cart {
         }
     }
 
+    // Clear mini cart (not product list)
     clearRender() {
         let sideCart = document.querySelector('#cart');
         sideCart.innerHTML = "";
     }
 
+    // Get the mini cart total value
     calculate() {
         let vlTotal = 0;
         this.cart.forEach(el => vlTotal += el.price - (el.price * 0.2));
@@ -73,6 +79,7 @@ class Cart {
         return vlTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 
+    // Show the correct logo according to brand property of product
     setBrand(brand) {
         let logo = '';
         switch (brand) {
@@ -90,6 +97,7 @@ class Cart {
         return logo;
     }
 
+    // Fake discount
     currentPrice(obj) {
         if (obj) {
             return (obj.price - (obj.price * 0.2)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -98,6 +106,7 @@ class Cart {
         }
     }
 
+    // Render total of products
     total(length) {
        return `<section class="bag__total">
                     <p>Total(${length == 1 ? length + " item" : length + " items"}): </p>
@@ -107,18 +116,23 @@ class Cart {
                 `;
     }
 
+    // Close order button, but there's no checkout in this project
     closeOrder() {
         // Close order and Go to Checkout
         console.log('CHECKOUT!');
     }
 
+    // Mount the schema to render items in mini cart
     mountCart(obj, limit = false) {
+        // Get product types, but not quantity in cart
         let unique = new Set(this.cart);
         let render = '';
         
+        // Check product quantity
         if (obj.quantity > 0) {
             this.clearRender();
             unique.forEach(obj => {
+                // Get the quantity of each product in cart
                 let quantity = this.cart.filter(el => el.id == obj.id).length;
                 render += `
             <section class="bag">
@@ -146,6 +160,7 @@ class Cart {
         this.renderCart(render);
     }
 
+    // Insert the cart content in html schema
     renderCart(render) {
         let sideCart = document.querySelector('#cart');
         let contentCart = '';
