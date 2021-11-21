@@ -1,4 +1,9 @@
-# SIMPLE SHOP CART IN VANILLA JAVASCRIPT
+# Projeto Refactoring
+O projeto Refactoring consiste em passar por todos os meus repositórios antigos e refatorar o código existente e finalizar os projetos inacabados.
+
+A ideia também é manter a versão antiga em outra branch, assim posso fazer comparações entre eles.
+
+## 16. Simple shop cart (sim, mais um) com Javascript puro.
 
 ## Main Topics
 
